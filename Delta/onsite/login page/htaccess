@@ -1,0 +1,8 @@
+RewriteEngine on
+RewriteRule ^(www.anything.com|anything.com|anything)$ ./index.php [NC]
+
+AuthName "protected"
+AuthType Basic
+Require valid-user
+AuthUserFile /var/www/anything.com/.htpasswd
+

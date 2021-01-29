@@ -1,0 +1,23 @@
+.txt_container {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: calc(50px + 10vh);
+    margin-right: calc(50px + 10vh);
+    text-align: center;
+    font-size: calc(10px + 1vw);
+}
+body{
+    background-image: url(./bg1.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top:  50px;
+    -ms-overflow-style: none;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+

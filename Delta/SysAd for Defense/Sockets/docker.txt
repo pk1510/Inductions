@@ -1,0 +1,62 @@
+sudo mkdir -p /root/server
+sudo chown -R $USER:$USER /root/server
+sudo nano /root/server/Dockerfile
+
+#into the file
+
+FROM python:latest
+ADD /root/server/server.py /app
+WORKDIR /app
+
+CMD ["python", "server.py"]
+
+#save and exit the file
+
+sude mkdir -p /root/client
+sudo chown -R $USER:$USER /root/client
+sudo nano /root/client/Dockerfile
+
+#into the file
+
+FROM python:latest
+ADD /root/client/client.py /root/client/chat-history.py /app
+WORKDIR /app
+
+CMD ["python", "client.py"]
+
+#save and exit the file
+
+sudo nano /root/docker-compose.yml
+
+#into the file
+
+version: "3"
+
+  services:
+
+   server:
+    build: /server
+
+    command: python ./server.py <ipaddress> <port>
+
+    ports:
+     - 8080:8080
+  
+   
+   client:
+    build: /client
+
+    command: python ./client.py <ipaddress> <port>
+
+    network_mode: host
+
+    depends on:
+     - server
+   
+
+
+#save and exit the file
+
+
+docker-compose up
+   
